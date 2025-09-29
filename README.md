@@ -29,7 +29,7 @@ Setiap program berjalan, program ini akan memasukkan data dummy minimal sebanyak
 1. Menambahkan objek baru pada suatu objek kantor berdasarkan kode kantor.
 2. Menambahkan objek kantor baru, yang hanya mengisi atribut satu-data, dan atribut multi-data masih kosong.
 3. Menampilkan seluruh objek kantor dalam bentuk list.
-4. Menampilkan seluruh data dalam suatu objek kantor, yang diawali dari atribut inti dalam bentuk list, serta atribut multi-objek dalam bentuk tabel.
+4. Menampilkan seluruh data dalam suatu objek kantor, yang diawali dari atribut inti, serta atribut multi-objek dalam bentuk list.
 
 ## Preview operasional program
 
