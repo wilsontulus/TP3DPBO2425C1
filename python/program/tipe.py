@@ -14,5 +14,5 @@ class Tipe:
 
     # constructor untuk inisialisasi atribut
 
-    def __init__(self):
+    def __init__(self) -> None:
         return None
