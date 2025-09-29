@@ -10,7 +10,7 @@ Aamiin.
 
 ## Desain diagram
 
-Program ini diperuntukkan untuk Perkantoran IT dan memiliki 6 kelas, yaitu kelas "Penduduk", "Karyawan", "Manager", "Projek", "Aset", dan "Kantor" sesuai dengan peta UML berikut:
+Program ini diperuntukkan untuk Perkantoran IT dan memiliki 6 kelas, yaitu kelas "Penduduk", "Karyawan", "Manager", "Proyek", "Aset", dan "Kantor" sesuai dengan peta UML berikut:
 
 ![Peta UML untuk program](uml_diagram.svg)
 
