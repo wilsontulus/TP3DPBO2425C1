@@ -17,17 +17,30 @@
 
 // Deklarasi konstruktor awal untuk inisialisasi
 Karyawan::Karyawan() {
+    this->kode = "";
     this->status = "";
     this->bidang = "";
 };
 
 // Konstruktor untuk membuat objek baru oleh fungsi luar
-Karyawan::Karyawan(string nik, string nama, string nomorHP, string status, string bidang, Manager manager) 
-                : Penduduk(nik, nama, nomorHP) 
+Karyawan::Karyawan(string nik, string nama, string nomorHP, 
+                   string kode, string status, string bidang, Manager manager) 
+                   : Penduduk(nik, nama, nomorHP) 
 {
+    this->kode = kode;
     this->status = status;
     this->bidang = bidang;
     this->manager = manager;
+};
+
+// Fungsi setter untuk menentukan kode karyawan
+void Karyawan::setKode(string kode) {
+    this->kode = kode;
+};
+
+// Fungsi setter untuk menentukan status karyawan
+void Karyawan::setStatus(string status) {
+    this->bidang = status;
 };
 
 // Fungsi setter untuk menentukan bidang karyawan
@@ -39,6 +52,12 @@ void Karyawan::setBidang(string bidang) {
 void Karyawan::setManager(Manager manager) {
     this->manager = manager;
 };
+
+// Fungsi getter untuk mendapatkan kode karyawan
+string Karyawan::getKode() {
+    return this->kode;
+};
+
 // Fungsi getter untuk mendapatkan status karyawan
 string Karyawan::getStatus() {
     return this->status;

@@ -17,16 +17,24 @@
 
 // Deklarasi konstruktor awal untuk inisialisasi
 Manager::Manager() {
+    this->kode = "";
     this->bidang = "";
     this->periode = "";
 };
 
 // Konstruktor untuk membuat objek baru oleh fungsi luar
-Manager::Manager(string nik, string nama, string nomorHP, string bidang, string periode) 
-                : Penduduk(nik, nama, nomorHP) 
+Manager::Manager(string nik, string nama, string nomorHP, 
+                 string kode, string bidang, string periode) 
+                 : Penduduk(nik, nama, nomorHP) 
 {
+    this->kode = kode;
     this->bidang = bidang;
     this->periode = periode;
+};
+
+// Fungsi setter untuk menentukan kode manager
+void Manager::setKode(string kode) {
+    this->kode = kode;
 };
 
 // Fungsi setter untuk menentukan bidang manager
@@ -38,6 +46,12 @@ void Manager::setBidang(string bidang) {
 void Manager::setPeriode(string periode) {
     this->periode = periode;
 };
+
+// Fungsi getter untuk mendapatkan kode manager
+string Manager::getKode() {
+    return this->kode;
+};
+
 // Fungsi getter untuk mendapatkan bidang manager
 string Manager::getBidang() {
     return this->bidang;

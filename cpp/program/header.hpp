@@ -46,20 +46,23 @@ class Penduduk {
 
 class Manager : public Penduduk {
     private:
+        string kode;
         string bidang;
         string periode;
 
     public:
         // Konstruktor
         Manager();
-        Manager(string nik, string nama, 
-                string nomorHP, string bidang, string periode);
+        Manager(string nik, string nama, string nomorHP, 
+                string kode, string bidang, string periode);
 
         // Fungsi setter (write)
+        void setKode(string kode);
         void setBidang(string bidang);
         void setPeriode(string periode);
 
         // Fungsi getter (read)
+        string getKode();
         string getBidang();
         string getPeriode();
 
@@ -69,6 +72,7 @@ class Manager : public Penduduk {
 
 class Karyawan : public Penduduk {
     private:
+        string kode;
         string status;
         string bidang;
         Manager manager;
@@ -77,14 +81,16 @@ class Karyawan : public Penduduk {
         // Konstruktor
         Karyawan();
         Karyawan(string nik, string nama, string nomorHP, 
-                 string status, string bidang, Manager manager);
+                 string kode, string status, string bidang, Manager manager);
 
         // Fungsi setter (write)
+        void setKode(string kode);
         void setStatus(string status);
         void setBidang(string bidang);
         void setManager(Manager manager);
 
         // Fungsi getter (read)
+        string getKode();
         string getStatus();
         string getBidang();
         Manager getManager();

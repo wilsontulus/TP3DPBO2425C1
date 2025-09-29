@@ -31,11 +31,11 @@ int main() {
     kantorA.addProyek(Proyek("GP001", "Pembuatan graf pemetaan lapang ruko", "Outdoor", "15/10/2025"));
     kantorA.addProyek(Proyek("GP002", "Analisis arsitektur pemrosesan RISC-V", "Analisa", "28/10/2025"));
 
-    kantorA.addManager(Manager("000301", "Astec", "08100011", "Head Management", "5 Tahun"));
-    kantorA.addManager(Manager("000341", "Chendy", "08400030", "Human Resources", "2 Tahun"));
+    kantorA.addManager(Manager("000301", "Astec", "08100011", "GM002", "Head Management", "5 Tahun"));
+    kantorA.addManager(Manager("000341", "Chendy", "08400030", "GM003", "Human Resources", "2 Tahun"));
 
-    kantorA.addKaryawan(Karyawan("000980", "Asep", "08950001200", "Tetap", "Administrasi", kantorA.getManager().front()));
-    kantorA.addKaryawan(Karyawan("000991", "Ghea", "08950001250", "Tetap", "Resepsionis", kantorA.getManager().back()));
+    kantorA.addKaryawan(Karyawan("000980", "Asep", "08950001200", "GK012", "Tetap", "Administrasi", kantorA.getManager().front()));
+    kantorA.addKaryawan(Karyawan("000991", "Ghea", "08950001250", "GK016", "Tetap", "Resepsionis", kantorA.getManager().back()));
 
     // Data dummy untuk kantor B
     Kantor kantorB = Kantor("K002", "IC Tek BDG", "Bandung");
@@ -47,12 +47,12 @@ int main() {
     kantorB.addProyek(Proyek("IP001", "Analisis pemasaran produk konsumsi berbasis PC-AI", "Outdoor", "12/10/2025"));
     kantorB.addProyek(Proyek("IP002", "Perancangan prototipe untuk desain sirkuit IC-A001", "Analisa", "09/11/2025"));
 
-    kantorB.addManager(Manager("000299", "Erza", "08100019", "Head Management", "4 Tahun"));
-    kantorB.addManager(Manager("000482", "Dezky", "08200099", "Stock Management", "3 Tahun"));
+    kantorB.addManager(Manager("000299", "Erza", "08100019", "AM003", "Head Management", "4 Tahun"));
+    kantorB.addManager(Manager("000482", "Dezky", "08200099", "AM005", "Stock Management", "3 Tahun"));
 
-    kantorB.addKaryawan(Karyawan("000976", "Jakob", "08890001280", "Tetap", "Administrasi", kantorA.getManager().front()));
-    kantorB.addKaryawan(Karyawan("0001152", "Reva", "08830001500", "Tetap", "Asisten Produksi", kantorA.getManager().back()));
-    kantorB.addKaryawan(Karyawan("000948", "Kobi", "08820001290", "Tetap", "Resepsionis", kantorA.getManager().front()));
+    kantorB.addKaryawan(Karyawan("000976", "Jakob", "08890001280", "AK010", "Tetap", "Administrasi", kantorA.getManager().front()));
+    kantorB.addKaryawan(Karyawan("0001152", "Reva", "08830001500", "AK016", "Tetap", "Asisten Produksi", kantorA.getManager().back()));
+    kantorB.addKaryawan(Karyawan("000948", "Kobi", "08820001290", "AK017", "Tetap", "Resepsionis", kantorA.getManager().front()));
     
     // Masukkan ke list kantor
     listKantor.push_back(kantorA);
@@ -95,6 +95,27 @@ int main() {
                 break;
             case 2: // Tambah objek kantor baru.
 
+                // Untuk nama dan lokasi, getline digunakan untuk menerima spasi
+                // cin.ignore() digunakan sebelum getline pertama untuk mencegah double newline di beberapa sistem.
+
+                cout << "Masukkan kode kantor baru: ";
+                cin.ignore();
+                getline(cin, tempOfficeCode);
+
+                cout << "Masukkan nama kantor: ";
+                getline(cin, tempName);
+
+                cout << "Masukkan lokasi kantor: ";
+                getline(cin, tempLocation);
+
+                /* Set data sesuai input */
+
+                // Tambahkan sebagai baris terakhir list
+
+                listKantor.push_back(Kantor(tempOfficeCode, tempName, tempLocation));
+
+                // Tampilkan bahwa proses penambahan kantor baru sudah selesai
+                cout << "Sukses menambahkan kantor dengan kode " << tempOfficeCode << endl;
                 break;
             case 3: // Tampilkan seluruh kantor yang tersedia
                 if (listKantor.empty() == true) {
@@ -188,6 +209,7 @@ int main() {
                             cout << "(Kosong)" << endl;
                         } else {
                             for (Manager manager : kantor.getManager()) {
+                                cout << "Kode: " << manager.getKode() << endl;
                                 cout << "NIK: " << manager.getNik() << endl;
                                 cout << "Nama: " << manager.getNama() << endl;
                                 cout << "No. HP: " << manager.getNomorHP() << endl;
@@ -203,6 +225,7 @@ int main() {
                             cout << "(Kosong)" << endl;
                         } else {
                             for (Karyawan karyawan : kantor.getKaryawan()) {
+                                cout << "Kode: " << karyawan.getKode() << endl;
                                 cout << "NIK: " << karyawan.getNik() << endl;
                                 cout << "Nama: " << karyawan.getNama() << endl;
                                 cout << "No. HP: " << karyawan.getNomorHP() << endl;
