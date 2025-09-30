@@ -252,7 +252,7 @@ int main() {
 
                                         // Peringatkan jika kode manager tidak ditemukan
                                         if (employManagerFound == false) {
-                                            cout << "Kode managar " << tempEmployeeManagerCode << " tidak ditemukan." << endl;
+                                            cout << "Kode manager " << tempEmployeeManagerCode << " tidak ditemukan." << endl;
                                         };
                                     } else { // Batalkan proses jika kode sudah digunakan
                                         cout << "Kode manager " << tempIndexCode << " sudah digunakan oleh " << tempName << "." << endl;

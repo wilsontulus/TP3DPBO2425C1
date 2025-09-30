@@ -11,11 +11,11 @@
 # Aamiin.
 
 # Deklarasi kelas objek #
-from manager import Manager  # pyright: ignore[reportImplicitRelativeImport]
-from karyawan import Karyawan  # pyright: ignore[reportImplicitRelativeImport]
-from proyek import Proyek  # pyright: ignore[reportImplicitRelativeImport]
-from aset import Aset  # pyright: ignore[reportImplicitRelativeImport]
-from kantor import Kantor  # pyright: ignore[reportImplicitRelativeImport]
+from manager import Manager
+from karyawan import Karyawan
+from proyek import Proyek
+from aset import Aset
+from kantor import Kantor
 
 # Deklarasi fungsi utama (main) #
 
@@ -86,7 +86,182 @@ def main():
 
             match choiceNum:
                 case 1: # Tambah data baru pada suatu kantor.
-                    print("not implemented")
+                    # Tampilkan list menu atribut
+                    print("Menu Penambahan Data Kantor:")
+                    print("1. Aset")
+                    print("2. Proyek")
+                    print("3. Karyawan")
+                    print("4. Manager")
+                    tempAddDataSelection = input("Pilih data untuk ditambahkan: ")
+                    
+                    # Periksa masukan angka
+                    if tempAddDataSelection.isdigit():
+                        tempAddDataSelection = int(tempAddDataSelection)
+                        
+                        # Periksa angka masukan
+                        if (tempAddDataSelection >= 1 and tempAddDataSelection <= 4):
+                            # Tampilkan kode kantor yang tersedia
+                            print("Kantor tersedia:")
+                            for kantor in listKantor:
+                                print("[" + kantor.getKode() + "] " + kantor.getNama())
+                                
+                            print("")
+                            
+                            # Minta input kode kantor untuk melanjutkan penambahan data kantor
+                            tempOfficeCode = input("Masukkan kode kantor: ")
+                            
+                            # Periksa apakah ada kantor dengan kode yang sama
+
+                            officeFound = False
+                            
+                            for kantor in listKantor:
+                                if kantor.getKode() == tempOfficeCode:
+                                    officeFound = True
+                                    match(tempAddDataSelection):
+                                        case 1: # Penambahan aset baru
+                                            tempIndexCode = input("Masukkan kode aset: ")
+                                            
+                                            # Periksa apakah kode aset yang dimasukkan sudah digunakan oleh aset lain
+                                            dataFound = False
+                                            for aset in kantor.getAset():
+                                                if aset.getKode() == tempIndexCode:
+                                                    dataFound = True
+                                                    tempName = aset.getNama()
+                                                    
+                                            # Lanjutkan jika kode belum digunakan
+                                            if dataFound == False:
+                                                tempName = input("Masukkan nama aset: ")
+                                                tempType = input("Masukkan jenis aset: ")
+                                                tempJumlah = input("Masukkan jumlah aset: ")
+                                                
+                                                if tempJumlah.isdigit():
+                                                    tempJumlah = int(tempJumlah)
+                                                    
+                                                    # Tambahkan sebagai baris terakhir list
+                                                    kantor.addAset(Aset(tempIndexCode, tempName, tempType, tempJumlah))
+                                                    
+                                                    # Tampilkan bahwa proses penambahan aset baru sudah selesai
+                                                    print("Sukses menambahkan aset baru dengan kode " + tempIndexCode)
+                                                else:
+                                                    print("Masukan jumlah harus berupa angka.")
+                                                print("Sukses menambahkan aset baru dengan kode " + tempIndexCode)
+                                            else: # Batalkan proses jika kode sudah digunakan
+                                                print("Kode aset " + tempIndexCode + " sudah digunakan oleh aset bernama " + tempName + ".")
+                                                
+                                        case 2: # Penambahan proyek baru
+                                            tempIndexCode = input("Masukkan kode proyek: ")
+                                            
+                                            # Periksa apakah kode proyek yang dimasukkan sudah digunakan oleh proyek lain
+                                            dataFound = False
+                                            for proyek in kantor.getProyek():
+                                                if proyek.getKode() == tempIndexCode:
+                                                    dataFound = True
+                                                    tempName = proyek.getNama()
+                                                    
+                                            # Lanjutkan jika kode belum digunakan
+                                            if dataFound == False:
+                                                tempName = input("Masukkan nama proyek: ")
+                                                tempType = input("Masukkan jenis proyek: ")
+                                                tempDeadline = input("Masukkan deadline proyek: ")
+                                                    
+                                                # Tambahkan sebagai baris terakhir list
+                                                kantor.addProyek(Proyek(tempIndexCode, tempName, tempType, tempDeadline))
+                                                    
+                                                # Tampilkan bahwa proses penambahan proyek baru sudah selesai
+                                                print("Sukses menambahkan proyek baru dengan kode " + tempIndexCode)
+                                            else: # Batalkan proses jika kode sudah digunakan
+                                                print("Kode proyek " + tempIndexCode + " sudah digunakan oleh proyek bernama " + tempName + ".")
+                                        case 3: # Penambahan karyawan baru
+                                            tempIndexCode = input("Masukkan kode karyawan: ")
+                                            
+                                            # Periksa apakah kode karyawan yang dimasukkan sudah digunakan oleh karyawan lain
+                                            dataFound = False
+                                            for karyawan in kantor.getKaryawan():
+                                                if karyawan.getKode() == tempIndexCode:
+                                                    dataFound = True
+                                                    tempName = karyawan.getNama()
+                                                    
+                                            # Lanjutkan jika kode belum digunakan
+                                            if dataFound == False:
+                                                # Kelas "Penduduk"
+                                                tempNik = input("Masukkan NIK karyawan: ")
+                                                tempName = input("Masukkan nama karyawan: ")
+                                                tempNoHP = input("Masukkan nomor HP karyawan: ")
+                                                
+                                                # Kelas "Karyawan"
+                                                tempStatus = input("Masukkan status kerja karyawan: ")
+                                                tempBidang = input("Masukkan bidang karyawan: ")
+                                                
+                                                # Tampilkan list manager
+                                                print("List manager tersedia:")
+                                                for manager in kantor.getManager():
+                                                    print("[" + manager.getKode() + "] " + manager.getNama())
+                                                    
+                                                print("")
+                                                
+                                                # Minta input kode manager
+                                                tempEmployeeManagerCode = input("Masukkan kode manager untuk karyawan: ")
+                                                
+                                                # Periksa manager tersedia
+                                                employManagerFound = False
+                                                for manager in kantor.getManager():
+                                                    if tempEmployeeManagerCode == manager.getKode():
+                                                        employManagerFound = True
+                                                        
+                                                        # Tambahkan sebagai baris terakhir list
+                                                        kantor.addKaryawan(Karyawan(tempNik, tempName, tempNoHP, tempIndexCode, tempStatus, tempBidang, manager))
+                                                        
+                                                        # Tampilkan bahwa proses penambahan aset baru sudah selesai
+                                                        print("Sukses menambahkan karyawan baru dengan kode " + tempIndexCode)
+                                                        
+                                                
+                                                # Peringatkan jika kode manager tidak ditemukan
+                                                if employManagerFound == False:
+                                                    print("Kode manager " + tempEmployeeManagerCode + " tidak ditemukan.")
+                                            else: # Batalkan proses jika kode sudah digunakan
+                                                print("Kode karyawan " + tempIndexCode + " sudah digunakan oleh " + tempName + ".")
+                                        case 4: # Penambahan manager baru
+                                            tempIndexCode = input("Masukkan kode manager: ")
+                                            
+                                            # Periksa apakah kode manager yang dimasukkan sudah digunakan oleh manager lain
+                                            dataFound = False
+                                            for manager in kantor.getManager():
+                                                if manager.getKode() == tempIndexCode:
+                                                    dataFound = True
+                                                    tempName = manager.getNama()
+                                                    
+                                            # Lanjutkan jika kode belum digunakan
+                                            if dataFound == False:
+                                                # Kelas "Penduduk"
+                                                tempNik = input("Masukkan NIK manager: ")
+                                                tempName = input("Masukkan nama manager: ")
+                                                tempNoHP = input("Masukkan nomor HP manager: ")
+                                                
+                                                # Kelas "Manager"
+                                                tempBidang = input("Masukkan bidang manager: ")
+                                                tempPeriode = input("Masukkan periode manager: ")
+                                                
+                                                # Tambahkan sebagai baris terakhir list
+                                                kantor.addManager(Manager(tempNik, tempName, tempNoHP, tempIndexCode, tempBidang, tempPeriode))
+                                                        
+                                                # Tampilkan bahwa proses penambahan aset baru sudah selesai
+                                                print("Sukses menambahkan manager baru dengan kode " + tempIndexCode)
+                                                
+                                            else: # Batalkan proses jika kode sudah digunakan
+                                                print("Kode manager " + tempIndexCode + " sudah digunakan oleh " + tempName + ".")
+                                            
+                                        case _:
+                                            print("Masukan harus sesuai dengan menu yang ditentukan (1-4).")
+                                    
+                            # Peringatkan jika kode kantor tidak ditemukan
+                            if officeFound == False:
+                                print("Kode kantor tidak ditemukan.")
+                        else:
+                            print("Masukan harus sesuai dengan menu yang ditentukan (1-4).")
+                    else:
+                        print("Masukan harus berupa angka.")
+                    
+                    
                 case 2: # Tambah objek kantor baru.
                     tempOfficeCode = input("Masukkan kode kantor baru: ")
                     
@@ -112,7 +287,6 @@ def main():
                     else: # Batalkan proses jika kode sudah digunakan
                         print("Kode kantor " + tempOfficeCode + " sudah digunakan oleh kantor bernama " + tempName + ".")
                         
-                    
                 case 3: # Tampilkan seluruh kantor yang tersedia
                     if len(listKantor) > 0:
                         print("List kantor yang tersedia:\n")
@@ -181,7 +355,9 @@ def main():
                                 
                             # Selesaikan dengan newline
                             print("")
-                            
+                        
+                        # Jeda menu hingga menekan Enter
+                        _ = input("Tekan ENTER untuk kembali ke menu utama.")                            
                     else: # Jika tidak ada kantor tersedia, tampilkan bahwa tidak ada kantor yang tersedia.
                         print("List kantor tidak tersedia.")
                 case 4: # Tampilkan seluruh data yang terkait dari suatu kantor
@@ -266,6 +442,9 @@ def main():
                     # Peringatkan jika kode kantor tidak ditemukan
                     if officeFound == False:
                         print("Kode kantor tidak ditemukan.")
+                    else:
+                        # Jeda menu hingga menekan Enter
+                        _ = input("Tekan ENTER untuk kembali ke menu utama.")
                         
                 case 0:
                     print("Program selesai digunakan.")
