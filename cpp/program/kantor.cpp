@@ -17,16 +17,30 @@
 
 // Deklarasi konstruktor awal untuk inisialisasi
 Kantor::Kantor() {
+    // Inisialisasi Atribut
     this->kode = "";
     this->nama = "";
     this->lokasi = "";
+
+    // Inisialisasi List
+    this->manager = new list<Manager>;
+    this->karyawan = new list<Karyawan>;
+    this->proyek = new list<Proyek>;
+    this->aset = new list<Aset>;
 };
 
 // Konstruktor untuk membuat objek baru oleh fungsi luar
 Kantor::Kantor(string kode, string nama, string lokasi) {
+    // Tentukan atribut
     this->kode = kode;
     this->nama = nama;
     this->lokasi = lokasi;
+
+    // Inisialisasi List
+    this->manager = new list<Manager>;
+    this->karyawan = new list<Karyawan>;
+    this->proyek = new list<Proyek>;
+    this->aset = new list<Aset>;
 };
 
 // Fungsi setter untuk menentukan kode kantor
@@ -46,22 +60,22 @@ void Kantor::setLokasi(string lokasi) {
 
 // Fungsi adder untuk menambahkan manager kantor
 void Kantor::addManager(Manager manager) {
-    this->manager.push_back(manager);
+    this->manager->push_back(manager);
 };
 
 // Fungsi adder untuk menambahkan karyawan kantor
 void Kantor::addKaryawan(Karyawan karyawan) {
-    this->karyawan.push_back(karyawan);
+    this->karyawan->push_back(karyawan);
 };
 
 // Fungsi adder untuk menambahkan proyek kantor
 void Kantor::addProyek(Proyek proyek) {
-    this->proyek.push_back(proyek);
+    this->proyek->push_back(proyek);
 };
 
 // Fungsi adder untuk menambahkan aset kantor
 void Kantor::addAset(Aset aset) {
-    this->aset.push_back(aset);
+    this->aset->push_back(aset);
 };
 
 // Fungsi getter untuk mendapatkan kode kantor
@@ -81,22 +95,22 @@ string Kantor::getLokasi() {
 
 // Fungsi getter untuk mendapatkan list dari manager kantor
 list<Manager> Kantor::getManager() {
-    return this->manager;
+    return *this->manager;
 };
 
 // Fungsi getter untuk mendapatkan list dari karyawan kantor
 list<Karyawan> Kantor::getKaryawan() {
-    return this->karyawan;
+    return *this->karyawan;
 };
 
 // Fungsi getter untuk mendapatkan list dari proyek kantor
 list<Proyek> Kantor::getProyek() {
-    return this->proyek;
+    return *this->proyek;
 };
 
 // Fungsi getter untuk mendapatkan list dari aset kantor
 list<Aset> Kantor::getAset() {
-    return this->aset;
+    return *this->aset;
 };
 
 // Deklarasi destruktor

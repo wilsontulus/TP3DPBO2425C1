@@ -24,7 +24,7 @@ Karyawan::Karyawan() {
 
 // Konstruktor untuk membuat objek baru oleh fungsi luar
 Karyawan::Karyawan(string nik, string nama, string nomorHP, 
-                   string kode, string status, string bidang, Manager manager) 
+                   string kode, string status, string bidang, Manager *manager) 
                    : Penduduk(nik, nama, nomorHP) 
 {
     this->kode = kode;
@@ -49,7 +49,7 @@ void Karyawan::setBidang(string bidang) {
 };
 
 // Fungsi setter untuk menentukan manajer karyawan
-void Karyawan::setManager(Manager manager) {
+void Karyawan::setManager(Manager *manager) {
     this->manager = manager;
 };
 
@@ -69,7 +69,7 @@ string Karyawan::getBidang() {
 };
 
 // Fungsi getter untuk mendapatkan manager dari karyawan
-Manager Karyawan::getManager() {
+Manager* Karyawan::getManager() {
     return this->manager;
 };
 
