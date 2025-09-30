@@ -20,7 +20,11 @@ Setiap kelas memiliki atribut dan metode getter / setter yang sesuai dengan atri
 
 ## Deskripsi desain program
 
-Kelas "Penduduk" merupakan suatu basis untuk kelas Karyawan dan Manager, yang dimana kelas Karyawan menggunakan kelas Manager sebagai atribut yang menentukan siapa yang mengelola pekerjaannya.
+Kelas "Penduduk" merupakan suatu basis untuk kelas Karyawan dan Manager, yang dimana kelas Karyawan menggunakan kelas Manager sebagai atribut yang menentukan siapa yang mengelola pekerjaannya. 
+
+Kelas "Karyawan" menggunakan kelas "Manager" sebagai composite attribute "manager" agar informasi mengenai manager yang terkait tetap konsisten saat menampilkan data dari karyawan yang ingin ditampilkan.
+
+Kelas "Kantor", yang merupakan kelas utama dari program ini, menampung atribut single value sebagai info mengenai kantor, beserta dengan atribut list yang menampung berbagai macam manager, karyawan, proyek, dan aset.
 
 ## Deskripsi alur program
 
@@ -40,7 +44,3 @@ C++:
 Python:
 
 ![Preview Python](python/docs/preview.webp)
-
-Java:
-
-![Preview Java](java/docs/preview.webp)
