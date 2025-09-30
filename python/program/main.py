@@ -11,11 +11,11 @@
 # Aamiin.
 
 # Deklarasi kelas objek #
-from manager import Manager
-from karyawan import Karyawan
-from proyek import Proyek
-from aset import Aset
-from kantor import Kantor
+from manager import Manager  # pyright: ignore[reportImplicitRelativeImport]
+from karyawan import Karyawan  # pyright: ignore[reportImplicitRelativeImport]
+from proyek import Proyek  # pyright: ignore[reportImplicitRelativeImport]
+from aset import Aset  # pyright: ignore[reportImplicitRelativeImport]
+from kantor import Kantor  # pyright: ignore[reportImplicitRelativeImport]
 
 # Deklarasi fungsi utama (main) #
 
@@ -66,6 +66,7 @@ def main():
     tempAddDataSelection = -1
 
     # Variabel sementara untuk bagian dari proses fungsi dibawah
+    tempName = ""
     tempIterator = 0
     officeFound = False
     employManagerFound = False
@@ -87,7 +88,31 @@ def main():
                 case 1: # Tambah data baru pada suatu kantor.
                     print("not implemented")
                 case 2: # Tambah objek kantor baru.
-                    print("not implemented")
+                    tempOfficeCode = input("Masukkan kode kantor baru: ")
+                    
+                    # Periksa apakah ada kantor dengan kode yang sama
+
+                    officeFound = False
+                    for kantor in listKantor:
+                        if (kantor.getKode() == tempOfficeCode):
+                            tempName = kantor.getNama()
+                            officeFound = True
+                            
+                    # Lanjutkan pembuatan kantor baru jika kode belum digunakan
+                    
+                    if officeFound == False:
+                        tempName = input("Masukkan nama kantor: ")
+                        tempLocation = input("Masukkan lokasi kantor: ")
+                        
+                        # Tambahkan sebagai baris terakhir list
+                        listKantor.append(Kantor(tempOfficeCode, tempName, tempLocation))
+                        
+                        # Tampilkan bahwa proses penambahan kantor baru sudah selesai
+                        print("Sukses menambahkan kantor dengan kode " + tempOfficeCode)
+                    else: # Batalkan proses jika kode sudah digunakan
+                        print("Kode kantor " + tempOfficeCode + " sudah digunakan oleh kantor bernama " + tempName + ".")
+                        
+                    
                 case 3: # Tampilkan seluruh kantor yang tersedia
                     if len(listKantor) > 0:
                         print("List kantor yang tersedia:\n")
@@ -109,6 +134,8 @@ def main():
                                         print(", ", end="")
                                         
                                 print("")
+                            else:
+                                print("(Kosong)")
                                 
                             # Tampilkan daftar karyawan kantor
                             print("Karyawan: ", end="")
@@ -121,6 +148,8 @@ def main():
                                         print(", ", end="")
                                         
                                 print("")
+                            else:
+                                print("(Kosong)")
                                 
                             # Tampilkan daftar proyek kantor
                             print("Proyek: ", end="")
@@ -133,6 +162,8 @@ def main():
                                         print(", ", end="")
                                         
                                 print("")
+                            else:
+                                print("(Kosong)")
                                 
                             # Tampilkan daftar aset kantor
                             print("Karyawan: ", end="")
@@ -145,6 +176,8 @@ def main():
                                         print(", ", end="")
                                         
                                 print("")
+                            else:
+                                print("(Kosong)")
                                 
                             # Selesaikan dengan newline
                             print("")

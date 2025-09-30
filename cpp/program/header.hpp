@@ -161,10 +161,10 @@ class Kantor {
         string nama;
         string lokasi;
 
-        list<Manager> *manager;
-        list<Karyawan> *karyawan;
-        list<Proyek> *proyek;
-        list<Aset> *aset;
+        list<Manager> manager;
+        list<Karyawan> karyawan;
+        list<Proyek> proyek;
+        list<Aset> aset;
 
     public:
         // Konstruktor

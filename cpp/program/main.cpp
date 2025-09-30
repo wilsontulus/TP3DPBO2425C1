@@ -118,7 +118,8 @@ int main() {
                     // Periksa apakah ada kantor dengan kode yang sama
 
                     officeFound = false;
-                    for (Kantor kantor : listKantor) {
+                    // Reference pointer digunakan agar atribut dari kelas dalam list bisa ditambahkan/diupdate
+                    for (Kantor &kantor : listKantor) {
                         if (kantor.getKode() == tempOfficeCode) {
                             officeFound = true;
                             switch(tempAddDataSelection) {
