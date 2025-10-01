@@ -50,9 +50,9 @@ int main() {
     kantorB.addManager(Manager("000299", "Erza", "08100019", "AM003", "Head Management", "4 Tahun"));
     kantorB.addManager(Manager("000482", "Dezky", "08200099", "AM005", "Stock Management", "3 Tahun"));
 
-    kantorB.addKaryawan(Karyawan("000976", "Jakob", "08890001280", "AK010", "Tetap", "Administrasi", &kantorA.getManager().front()));
-    kantorB.addKaryawan(Karyawan("0001152", "Reva", "08830001500", "AK016", "Tetap", "Asisten Produksi", &kantorA.getManager().back()));
-    kantorB.addKaryawan(Karyawan("000948", "Kobi", "08820001290", "AK017", "Tetap", "Resepsionis", &kantorA.getManager().front()));
+    kantorB.addKaryawan(Karyawan("000976", "Jakob", "08890001280", "AK010", "Tetap", "Administrasi", &kantorB.getManager().front()));
+    kantorB.addKaryawan(Karyawan("0001152", "Reva", "08830001500", "AK016", "Tetap", "Asisten Produksi", &kantorB.getManager().back()));
+    kantorB.addKaryawan(Karyawan("000948", "Kobi", "08820001290", "AK017", "Tetap", "Resepsionis", &kantorB.getManager().front()));
     
     // Masukkan ke list kantor
     listKantor.push_back(kantorA);

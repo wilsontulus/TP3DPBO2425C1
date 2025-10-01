@@ -53,9 +53,9 @@ def main():
     kantorB.addManager(Manager("000299", "Erza", "08100019", "AM003", "Head Management", "4 Tahun"));
     kantorB.addManager(Manager("000482", "Dezky", "08200099", "AM005", "Stock Management", "3 Tahun"));
 
-    kantorB.addKaryawan(Karyawan("000976", "Jakob", "08890001280", "AK010", "Tetap", "Administrasi", kantorA.getManager()[0]));
-    kantorB.addKaryawan(Karyawan("0001152", "Reva", "08830001500", "AK016", "Tetap", "Asisten Produksi", kantorA.getManager()[1]));
-    kantorB.addKaryawan(Karyawan("000948", "Kobi", "08820001290", "AK017", "Tetap", "Resepsionis", kantorA.getManager()[0]));
+    kantorB.addKaryawan(Karyawan("000976", "Jakob", "08890001280", "AK010", "Tetap", "Administrasi", kantorB.getManager()[0]));
+    kantorB.addKaryawan(Karyawan("0001152", "Reva", "08830001500", "AK016", "Tetap", "Asisten Produksi", kantorB.getManager()[1]));
+    kantorB.addKaryawan(Karyawan("000948", "Kobi", "08820001290", "AK017", "Tetap", "Resepsionis", kantorB.getManager()[0]));
     
     # Masukkan ke list kantor
     listKantor.append(kantorA)
@@ -399,7 +399,7 @@ def main():
                                     print("NIK: " + karyawan.getNik())
                                     print("Nama: " + karyawan.getNama())
                                     print("No. HP: " + karyawan.getNomorHP())
-                                    print("Status: " + karyawan.getBidang())
+                                    print("Status: " + karyawan.getStatus())
                                     print("Bidang: " + karyawan.getBidang())
                                     
                                     # Jika data manager terkait masih tersedia, tampilkan nama manager tersebut
@@ -431,7 +431,7 @@ def main():
                                     print("Kode: " + aset.getKode())
                                     print("Nama: " + aset.getNama())
                                     print("Jenis: " + aset.getJenis())
-                                    print("Jumlah: " + str(aset.getJumlah))                                      
+                                    print("Jumlah: " + str(aset.getJumlah()) + " pcs")                                      
                                     print("")
                             else:
                                 print("Kosong")
