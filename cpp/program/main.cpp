@@ -41,7 +41,7 @@ int main() {
     Kantor kantorB = Kantor("K002", "IC Tek BDG", "Bandung");
     
     kantorB.addAset(Aset("IA001", "ITM PC M70H", "PC Desktop", 50));
-    kantorB.addAset(Aset("IA002", "Supervision KD1-CF", "Interactive Boardd", 2));
+    kantorB.addAset(Aset("IA002", "Supervision KD1-CF", "Interactive Board", 2));
     kantorB.addAset(Aset("IA003", "eP Grandlion ae200cs", "Laptop", 5));
 
     kantorB.addProyek(Proyek("IP001", "Analisis pemasaran produk berbasis PC-AI untuk para konsumen", "Outdoor", "12/10/2025"));
@@ -197,12 +197,12 @@ int main() {
                                     cout << "Masukkan kode karyawan: ";
                                     cin >> tempIndexCode;
                                     
-                                    // Periksa apakah kode manager yang dimasukkan sudah digunakan oleh manager lain
+                                    // Periksa apakah kode karyawan yang dimasukkan sudah digunakan oleh karyawan lain
                                     dataFound = false;
-                                    for (Manager manager: kantor.getManager()) {
-                                        if (manager.getKode() == tempIndexCode) {
+                                    for (Karyawan karyawan: kantor.getKaryawan()) {
+                                        if (karyawan.getKode() == tempIndexCode) {
                                             dataFound = true;
-                                            tempName = manager.getNama();
+                                            tempName = karyawan.getNama();
                                         }
                                     }
 
@@ -217,14 +217,14 @@ int main() {
                                         getline(cin, tempName);
 
                                         cout << "Masukkan nomor HP karyawan: ";
-                                        cin >> tempNoHP;
+                                        getline(cin, tempNoHP);
 
                                         // Kelas "Karyawan"
                                         cout << "Masukkan status kerja karyawan: ";
-                                        cin >> tempStatus;
+                                        getline(cin, tempStatus);
 
                                         cout << "Masukkan bidang karyawan: ";
-                                        cin >> tempBidang;
+                                        getline(cin, tempBidang);
 
                                         // Tampilkan list manager
                                         cout << "List manager tersedia:" << endl;
@@ -233,14 +233,14 @@ int main() {
                                         };
                                         cout << endl;
 
-                                        // Minta input kode manager
+                                        // Minta input kode manager untuk asosiasi dengan karyawan
                                         cout << "Masukkan kode manager untuk karyawan: ";
                                         cin >> tempEmployeeManagerCode;
 
                                         // Periksa manager tersedia
                                         employManagerFound = false;
-                                        for (Manager manager: kantor.getManager()) {
-                                            if (tempEmployeeManagerCode == manager.getKode()) {
+                                        for (Manager &manager: kantor.getManager()) {
+                                            if (tempEmployeeManagerCode == manager.getKode() && employManagerFound != true) {
                                                 employManagerFound = true;
                                                 // Tambahkan sebagai baris terakhir list
                                                 kantor.addKaryawan(Karyawan(tempNik, tempName, tempNoHP, tempIndexCode, tempStatus, tempBidang, &manager));
@@ -255,7 +255,7 @@ int main() {
                                             cout << "Kode manager " << tempEmployeeManagerCode << " tidak ditemukan." << endl;
                                         };
                                     } else { // Batalkan proses jika kode sudah digunakan
-                                        cout << "Kode manager " << tempIndexCode << " sudah digunakan oleh " << tempName << "." << endl;
+                                        cout << "Kode karyawan " << tempIndexCode << " sudah digunakan oleh " << tempName << "." << endl;
                                     }
                                     break;
                                 case 4: // Penambahan manager baru
@@ -282,14 +282,14 @@ int main() {
                                         getline(cin, tempName);
 
                                         cout << "Masukkan nomor HP manager: ";
-                                        cin >> tempNoHP;
+                                        getline(cin, tempNoHP);
 
                                         // Kelas "Manager"
                                         cout << "Masukkan bidang manager: ";
-                                        cin >> tempBidang;
+                                        getline(cin, tempBidang);
 
                                         cout << "Masukkan periode manager: ";
-                                        cin >> tempPeriode;
+                                        getline(cin, tempPeriode);
 
                                         // Tambahkan sebagai baris terakhir list
                                         kantor.addManager(Manager(tempNik, tempName, tempNoHP, tempIndexCode, tempBidang, tempPeriode));

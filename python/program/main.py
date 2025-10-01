@@ -44,7 +44,7 @@ def main():
     kantorB: Kantor = Kantor("K002", "IC Tek BDG", "Bandung");
     
     kantorB.addAset(Aset("IA001", "ITM PC M70H", "PC Desktop", 50));
-    kantorB.addAset(Aset("IA002", "Supervision KD1-CF", "Interactive Boardd", 2));
+    kantorB.addAset(Aset("IA002", "Supervision KD1-CF", "Interactive Board", 2));
     kantorB.addAset(Aset("IA003", "eP Grandlion ae200cs", "Laptop", 5));
 
     kantorB.addProyek(Proyek("IP001", "Analisis pemasaran produk berbasis PC-AI untuk para konsumen", "Outdoor", "12/10/2025"));
