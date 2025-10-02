@@ -14,11 +14,11 @@ class Proyek:
 
     # constructor untuk inisialisasi atribut
 
-    def __init__(self, kode, nama, jenis, deadline):
-        self._kode = kode
-        self._nama = nama
-        self._jenis = jenis
-        self._deadline = deadline
+    def __init__(self, kode: str, nama: str, jenis: str, deadline: str) -> None:
+        self._kode: str = kode
+        self._nama: str = nama
+        self._jenis: str = jenis
+        self._deadline: str = deadline
 
     # Fungsi setter (write atribut)
     def setKode(self, kode: str) -> None:

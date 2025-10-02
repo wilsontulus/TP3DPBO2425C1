@@ -18,11 +18,11 @@ class Manager(Penduduk):
 
     # constructor untuk inisialisasi atribut
 
-    def __init__(self, nik, nama, nomorHP, kode, bidang, periode):
+    def __init__(self, nik: str, nama: str, nomorHP: str, kode: str, bidang: str, periode: str) -> None:
         super().__init__(nik, nama, nomorHP)
-        self._kode = kode
-        self._bidang = bidang
-        self._periode = periode
+        self._kode: str = kode
+        self._bidang: str = bidang
+        self._periode: str = periode
 
     # Fungsi setter (write atribut)
     def setKode(self, kode: str) -> None:

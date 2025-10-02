@@ -14,10 +14,10 @@ class Penduduk:
 
     # constructor untuk inisialisasi atribut
 
-    def __init__(self, nik, nama, nomorHP):
-        self._nik = nik
-        self._nama = nama
-        self._nomorHP = nomorHP
+    def __init__(self, nik: str, nama: str, nomorHP: str) -> None:
+        self._nik: str = nik
+        self._nama: str = nama
+        self._nomorHP: str = nomorHP
 
     # Fungsi setter (write atribut)
     def setNik(self, nik: str) -> None:

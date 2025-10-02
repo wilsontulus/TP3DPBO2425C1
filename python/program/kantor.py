@@ -21,7 +21,7 @@ class Kantor:
 
     # constructor untuk inisialisasi atribut
 
-    def __init__(self, kode, nama, lokasi) -> None:
+    def __init__(self, kode: str, nama: str, lokasi: str) -> None:
         self._kode: str = kode
         self._nama: str = nama
         self._lokasi: str = lokasi

@@ -19,12 +19,12 @@ class Karyawan(Penduduk):
 
     # constructor untuk inisialisasi atribut
 
-    def __init__(self, nik, nama, nomorHP, kode, status, bidang, manager):
+    def __init__(self, nik: str, nama: str, nomorHP: str, kode: str, status: str, bidang: str, manager: Manager) -> None:
         super().__init__(nik, nama, nomorHP)
-        self._kode = kode
-        self._status = status
-        self._bidang = bidang
-        self._manager = manager
+        self._kode: str = kode
+        self._status: str = status
+        self._bidang: str = bidang
+        self._manager: Manager = manager
 
     # Fungsi setter (write atribut)
     def setKode(self, kode: str) -> None:

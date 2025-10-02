@@ -120,7 +120,7 @@ int main() {
                     officeFound = false;
                     // Reference pointer digunakan agar atribut dari kelas dalam list bisa ditambahkan/diupdate
                     for (Kantor &kantor : listKantor) {
-                        if (kantor.getKode() == tempOfficeCode) {
+                        if (kantor.getKode() == tempOfficeCode && officeFound != true) {
                             officeFound = true;
                             switch(tempAddDataSelection) {
                                 // Untuk nama, getline digunakan untuk menerima spasi

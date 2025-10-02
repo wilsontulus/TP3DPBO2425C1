@@ -14,11 +14,11 @@ class Aset:
 
     # constructor untuk inisialisasi atribut
 
-    def __init__(self, kode, nama, jenis, jumlah):
-        self._kode = kode
-        self._nama = nama
-        self._jenis = jenis
-        self._jumlah = jumlah
+    def __init__(self, kode: str, nama: str, jenis: str, jumlah: int) -> None:
+        self._kode: str = kode
+        self._nama: str = nama
+        self._jenis: str = jenis
+        self._jumlah: int = jumlah
 
     # Fungsi setter (write atribut)
     def setKode(self, kode: str) -> None:
