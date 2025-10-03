@@ -34,8 +34,8 @@ int main() {
     kantorA.addManager(Manager("000301", "Astec", "08100011", "GM002", "Head Management", "5 Tahun"));
     kantorA.addManager(Manager("000341", "Chendy", "08400030", "GM003", "Human Resources", "2 Tahun"));
 
-    kantorA.addKaryawan(Karyawan("000980", "Asep", "08950001200", "GK012", "Tetap", "Administrasi", &kantorA.getManager().front()));
-    kantorA.addKaryawan(Karyawan("000991", "Ghea", "08950001250", "GK016", "Tetap", "Resepsionis", &kantorA.getManager().back()));
+    kantorA.addKaryawan(Karyawan("000980", "Asep", "08950001200", "GK012", "Tetap", "Administrasi", kantorA.getManager().front()));
+    kantorA.addKaryawan(Karyawan("000991", "Ghea", "08950001250", "GK016", "Tetap", "Resepsionis", kantorA.getManager().back()));
 
     // Data dummy untuk kantor B
     Kantor kantorB = Kantor("K002", "IC Tek BDG", "Bandung");
@@ -50,9 +50,9 @@ int main() {
     kantorB.addManager(Manager("000299", "Erza", "08100019", "AM003", "Head Management", "4 Tahun"));
     kantorB.addManager(Manager("000482", "Dezky", "08200099", "AM005", "Stock Management", "3 Tahun"));
 
-    kantorB.addKaryawan(Karyawan("000976", "Jakob", "08890001280", "AK010", "Tetap", "Administrasi", &kantorB.getManager().front()));
-    kantorB.addKaryawan(Karyawan("0001152", "Reva", "08830001500", "AK016", "Tetap", "Asisten Produksi", &kantorB.getManager().back()));
-    kantorB.addKaryawan(Karyawan("000948", "Kobi", "08820001290", "AK017", "Tetap", "Resepsionis", &kantorB.getManager().front()));
+    kantorB.addKaryawan(Karyawan("000976", "Jakob", "08890001280", "AK010", "Tetap", "Administrasi", kantorB.getManager().front()));
+    kantorB.addKaryawan(Karyawan("0001152", "Reva", "08830001500", "AK016", "Tetap", "Asisten Produksi", kantorB.getManager().back()));
+    kantorB.addKaryawan(Karyawan("000948", "Kobi", "08820001290", "AK017", "Tetap", "Resepsionis", kantorB.getManager().front()));
     
     // Masukkan ke list kantor
     listKantor.push_back(kantorA);
@@ -239,11 +239,13 @@ int main() {
 
                                         // Periksa manager tersedia
                                         employManagerFound = false;
-                                        for (Manager &manager: kantor.getManager()) {
-                                            if (tempEmployeeManagerCode == manager.getKode() && employManagerFound != true) {
+                                        for (Manager &managerPilihan: kantor.getManager()) {
+                                            if (tempEmployeeManagerCode == managerPilihan.getKode() && employManagerFound != true) {
+                                                // Lanjutkan jika sesuai dengan manager yang dipilih
                                                 employManagerFound = true;
+                                                
                                                 // Tambahkan sebagai baris terakhir list
-                                                kantor.addKaryawan(Karyawan(tempNik, tempName, tempNoHP, tempIndexCode, tempStatus, tempBidang, &manager));
+                                                kantor.addKaryawan(Karyawan(tempNik, tempName, tempNoHP, tempIndexCode, tempStatus, tempBidang, managerPilihan));
 
                                                 // Tampilkan bahwa proses penambahan aset baru sudah selesai
                                                 cout << "Sukses menambahkan karyawan baru dengan kode " << tempIndexCode << endl;
@@ -489,8 +491,8 @@ int main() {
                                 cout << "Bidang: " << karyawan.getBidang() << endl;
 
                                 // Jika data manager terkait masih tersedia, tampilkan nama manager tersebut
-                                if (karyawan.getManager() != NULL) {
-                                    cout << "Manager: " << karyawan.getManager()->getNama() << endl;
+                                if (karyawan.getManager().getNama() != "") {
+                                    cout << "Manager: " << karyawan.getManager().getNama() << endl;
                                 } else {
                                     cout << "Manager: (Tidak tersedia)" << endl;
                                 }

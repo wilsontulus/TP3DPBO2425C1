@@ -75,25 +75,25 @@ class Karyawan : public Penduduk {
         string kode;
         string status;
         string bidang;
-        Manager *manager; // Atribut "Manager" menggunakan pointer untuk menghindari redundansi data
+        Manager manager;
 
     public:
         // Konstruktor
         Karyawan();
         Karyawan(string nik, string nama, string nomorHP, 
-                 string kode, string status, string bidang, Manager *manager);
+                 string kode, string status, string bidang, Manager manager);
 
         // Fungsi setter (write)
         void setKode(string kode);
         void setStatus(string status);
         void setBidang(string bidang);
-        void setManager(Manager *manager);
+        void setManager(Manager manager);
 
         // Fungsi getter (read)
         string getKode();
         string getStatus();
         string getBidang();
-        Manager* getManager();
+        Manager getManager();
 
         // Destruktor
         ~Karyawan();
